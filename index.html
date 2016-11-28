@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daily Pricing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-app="price_app" ng-controller="price_app.controller as vm">
+    <div class="container">
+        <div class="download">
+            <a href="https://play.google.com/store/apps/details?id=com.truce.truceproc&referrer=utm_source%3Dbbweb%26utm_medium%3Dbanner%26utm_term%3Dweb%252Blink%26utm_content%3Dhomeq%26utm_campaign%3Dhome">
+                <img src="images/google-play-badge.png" class="img-responsive google-badge" alt="Google Play">
+            </a>
+        </div>
+        <div class="row">
+            <h1>भारत <b>bazaar</b></h1>
+            <h3 class="heading">Daily Pricing</h3>
+        </div>
+        <div class="row">
+            <div class="dropdown col-xs-6">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">City
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a ng-repeat="city in vm.cities">{{city.name}}</a></li>
+                </ul>
+            </div>
+            <div class="dropdown col-xs-6">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Language
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a>हिंदी</a></li>
+                    <li><a>English</a></li>
+                    <li><a>ગુજરાતી</a></li>
+                    <li><a>मराठी</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="jumbotron">
+                <div class="col-xs-6" ng-repeat="data in vm.api_data.payload.trends">
+                    <img src="{{data.img_url}}">
+                    <h3>{{data.product_name}}</h3>
+                    <p>₹ {{data.average}} / {{data.unit_name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/app.service.js"></script>
+<script src="scripts/app.controller.js"></script>
+
+</html>
